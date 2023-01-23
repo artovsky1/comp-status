@@ -1,12 +1,19 @@
-from styles import *
-from StartPage import *
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
 from sql_commands import *
+from customtkinter import *
+from styles import *
+import connection
+
 
 class NewCompPage(CTkFrame):
 
     def __init__(self, master):
+        from StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_new_comp_page(master)
+        conn = connection.connection()
 
         def button_action():
             if select_sql() is None:

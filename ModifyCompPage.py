@@ -1,8 +1,20 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+from sql_commands import *
+from customtkinter import *
+from styles import *
+import connection
+
+
 class ModifyCompPage(CTkFrame):
 
     def __init__(self, master, partnumber, revision, description, project, quantity, localization):
+        from ModifyTempCompPage import ModifyTempCompPage
+        from StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_modify_comp_page(master)
+        conn = connection.connection()
 
         def button_action():
             if select_sql() is None:

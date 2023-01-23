@@ -1,5 +1,13 @@
 from customtkinter import *
 from styles import *
+from BringBackCompPage import *
+from NewCompPage import *
+from ModifyTempCompPage import *
+from DeletePage import *
+from BringCompPage import *
+from ChangeTempCompPage import *
+from LookupPage import *
+from ChangelogPage import *
 
 class StartPage(CTkFrame):
 

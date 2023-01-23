@@ -1,8 +1,20 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+from sql_commands import *
+from customtkinter import *
+from styles import *
+import connection
+
+
 class ChangeCompPage(CTkFrame):
 
     def __init__(self, master, partnumber, revision, localization):
+        from ChangeTempCompPage import ChangeTempCompPage
+        from StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_change_comp_page(master)
+        conn = connection.connection()
 
         def empty_fields():
             if self.new_localization_py.get().strip() != "":

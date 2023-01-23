@@ -1,9 +1,18 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+from sql_commands import *
+from customtkinter import *
+from styles import *
+import connection
+
 class LookUpPage(CTkFrame):
 
     def __init__(self, master):
+        from StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_lookup_comp_page(master)
-
+        session = connection.session()
         style = ttk.Style()
 
         style.configure("Treeview",
@@ -39,7 +48,6 @@ class LookUpPage(CTkFrame):
         back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack()
 
-        session = Session()
         result = session.execute(SELECT_ALL)
         rows = result.fetchall()
         for row in rows:

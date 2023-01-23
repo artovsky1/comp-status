@@ -1,12 +1,19 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+from sql_commands import *
+from customtkinter import *
 from styles import *
 from StartPage import *
-from sql_commands import *
+import connection
+
 
 class LoginPage(CTkFrame):
 
     def __init__(self, master):
         CTkFrame.__init__(self, master)
         style_login_page(master)
+        conn = connection.connection()
 
         def button_login(*args):
             if all(val != "" for val in (self.username_py.get().strip(), self.password_py.get().strip())):

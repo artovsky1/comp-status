@@ -1,18 +1,28 @@
+from tkinter import *
+from tkinter import messagebox
+from tkinter import ttk
+from sql_commands import *
+from customtkinter import *
+from styles import *
+import connection
+
+
 class BringCompPage(CTkFrame):
 
     def __init__(self, master):
+        from StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_bring_comp_page(master)
+        conn = connection.connection()
+        session = connection.session()
 
         def list_partnumber():
-            session = Session()
             result = session.execute(SELECT_LIST)
             result_list = [row[0].strip() for row in result]
             session.close()
             return result_list
 
         def list_revision():
-            session = Session()
             result = session.execute(SELECT_LIST_REV, {"partnumber": self.partnumber_py.get().strip()})
             result_list = [row[0].strip() for row in result]
             session.close()
