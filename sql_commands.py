@@ -48,4 +48,4 @@ SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM
 
 # Auto Complete commands
 SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status"
-SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE :partnumber"
+SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%'"
