@@ -5,6 +5,7 @@ from sql_commands import *
 from customtkinter import *
 from styles import *
 import connection
+import suggestions
 
 
 class BringCompPage(CTkFrame):
@@ -16,20 +17,8 @@ class BringCompPage(CTkFrame):
         conn = connection.connection()
         session = connection.session()
 
-        def list_partnumber():
-            result = session.execute(SELECT_LIST)
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
-
-        def list_revision():
-            result = session.execute(SELECT_LIST_REV, {"partnumber": self.partnumber_py.get().strip()})
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
-
         def update_revision_list(*args):
-            self.revision_py["values"] = list_revision()
+            self.revision_py["values"] = suggestions.list_revision(self)
 
         def button_action():
             if select_sql() is not None:
@@ -74,27 +63,14 @@ class BringCompPage(CTkFrame):
             else:
                 master.switch_frame(StartPage)
 
-        def search(event):
-            value = event.widget.get()
-            if value == '':
-                self.partnumber_py['values'] = list_partnumber()
-
-            else:
-                data = []
-
-                for item in list_partnumber():
-                    if value.lower() in item.lower():
-                        data.append(item)
-                    self.partnumber_py['values'] = data
-
-        self.partnumber_py = ttk.Combobox(self, width=30, values=list_partnumber())
+        self.partnumber_py = ttk.Combobox(self, width=30, values=suggestions.list_partnumber())
         self.partnumber_py.grid(row=0, column=1)
-        self.partnumber_py.bind('<KeyRelease>', search)
+        self.partnumber_py.bind('<KeyRelease>', lambda event: suggestions.search(self, event))
         # self.partnumber_py.bind('<KeyRelease>', update_revision_list)
         self.partnumber_py.bind("<FocusOut>", update_revision_list)
         self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
         self.partnumber_py.bind("<Return>", update_revision_list)
-        self.revision_py = ttk.Combobox(self, width=30, values=list_revision())
+        self.revision_py = ttk.Combobox(self, width=30, values=suggestions.list_revision(self))
         self.revision_py.grid(row=1, column=1)
         self.quantity_py = CTkEntry(self, width=200)
         self.quantity_py.grid(row=4, column=1)

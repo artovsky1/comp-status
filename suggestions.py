@@ -13,16 +13,22 @@ def list_partnumber():
     return result_list
 
 
-def list_revision():
+def list_revision(self):
     result = session.execute(SELECT_LIST_REV, {"partnumber": self.partnumber_py.get().strip()})
     result_list = [row[0].strip() for row in result]
     session.close()
     return result_list
 
 
-def update_partnumber_list(*args):
-    self.partnumber_py["values"] = list_partnumber()
+def search(self, event):
+    value = event.widget.get()
+    if value == '':
+        self.partnumber_py['values'] = list_partnumber()
 
+    else:
+        data = []
 
-def update_revision_list(*args):
-    self.revision_py["values"] = list_revision()
+        for item in list_partnumber():
+            if value.lower() in item.lower():
+                data.append(item)
+            self.partnumber_py['values'] = data
