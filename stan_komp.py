@@ -10,9 +10,7 @@ import pyodbc
 from styles import *
 from StartPage import *
 
-'''engine = create_engine('mssql+pyodbc://komponentyuser:%s@a2582m011/komponenty?driver=SQL+Server' % quote("@dient2024"))
-conn = engine.connect()
-Session = sessionmaker(bind=engine)'''
+
 
 
 class Inventory(CTk):
