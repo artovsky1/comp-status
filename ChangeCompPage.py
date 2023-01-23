@@ -43,7 +43,7 @@ class ChangeCompPage(CTkFrame):
 
         self.new_localization_py.focus_set()
 
-        adient_py_label = CTkLabel(self, text="Adient P/N: ")
+        adient_py_label = CTkLabel(self, text="Part number: ")
         adient_py_label.grid(row=0, column=0)
         revision_py_label = CTkLabel(self, text="Rewizja: ")
         revision_py_label.grid(row=1, column=0)

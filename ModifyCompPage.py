@@ -75,7 +75,7 @@ class ModifyCompPage(CTkFrame):
         self.localization_py.grid(row=5, column=1)
 
         # Create text box labels
-        adient_py_label = CTkLabel(self, text="Adient P/N: ")
+        adient_py_label = CTkLabel(self, text="Part number: ")
         adient_py_label.grid(row=0, column=0, pady=(10, 0))
         revision_py_label = CTkLabel(self, text="Rewizja: ")
         revision_py_label.grid(row=1, column=0)

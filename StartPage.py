@@ -7,7 +7,7 @@ class StartPage(CTkFrame):
         CTkFrame.__init__(self, master)
         style_start_page(master)
 
-        CTkLabel(self, text="Stan komponentów Launch").grid(row=0, column=0)
+        CTkLabel(self, text="Stan komponentów").grid(row=0, column=0)
 
         button0 = CTkButton(self, text="Dodaj komponent",
                             command=lambda: master.switch_frame(NewCompPage))
