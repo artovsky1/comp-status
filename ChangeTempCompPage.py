@@ -6,7 +6,7 @@ from customtkinter import *
 from styles import *
 import connection
 from ChangeCompPage import *
-
+from suggestions import *
 
 class ChangeTempCompPage(CTkFrame):
 
@@ -16,21 +16,6 @@ class ChangeTempCompPage(CTkFrame):
         style_change_comp_page(master)
         conn = connection.connection()
         session = connection.session()
-
-        def list_partnumber():
-            result = session.execute(SELECT_LIST)
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
-
-        def list_revision():
-            result = session.execute(SELECT_LIST_REV, {"partnumber": self.partnumber_py.get().strip()})
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
-
-        def update_revision_list(*args):
-            self.revision_py["values"] = list_revision()
 
         def empty_fields():
             values = (self.partnumber_py.get().strip(), self.revision_py.get().strip())
@@ -58,10 +43,10 @@ class ChangeTempCompPage(CTkFrame):
 
         self.partnumber_py = ttk.Combobox(self, width=30, values=list_partnumber())
         self.partnumber_py.grid(row=0, column=1)
-        self.partnumber_py.bind('<KeyRelease>', search)
+        self.partnumber_py.bind("<KeyRelease>", search)
         # self.partnumber_py.bind('<KeyRelease>', update_revision_list)
         self.partnumber_py.bind("<FocusOut>", update_revision_list)
-        self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
+        self.partnumber_py.bind("<ComboboxSelected>", update_revision_list)
         self.partnumber_py.bind("<Return>", update_revision_list)
         self.revision_py = ttk.Combobox(self, width=30, values=list_revision())
         self.revision_py.grid(row=1, column=1)

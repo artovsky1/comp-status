@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Added suggestions for revision" />
+    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Added suggestions for revision">
+      <change afterPath="$PROJECT_DIR$/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChangeTempCompPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ChangeTempCompPage.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +63,7 @@
       <workItem from="1674469453470" duration="413000" />
       <workItem from="1674469879641" duration="2223000" />
       <workItem from="1674477883626" duration="2671000" />
+      <workItem from="1674492944635" duration="1918000" />
     </task>
     <task id="LOCAL-00001" summary="Added suggestions for revision">
       <created>1674470467268</created>
@@ -92,10 +97,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added suggestions for revision" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/stan_komp$LoginPage.coverage" NAME="LoginPage Coverage Results" MODIFIED="1674464991277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/stan_komp$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674467103171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674496350055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/comp_status_py$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674478719477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674479747569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/stan_komp$stan_komp.coverage" NAME="stan_komp Coverage Results" MODIFIED="1674468439987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/stan_komp$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674467103171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/stan_komp$LoginPage.coverage" NAME="LoginPage Coverage Results" MODIFIED="1674464991277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
