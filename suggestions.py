@@ -1,3 +1,11 @@
+import connection
+from sql_commands import *
+import ChangeTempCompPage
+
+conn = connection.connection()
+session = connection.session()
+
+
 def list_partnumber():
     result = session.execute(SELECT_LIST)
     result_list = [row[0].strip() for row in result]

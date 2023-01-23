@@ -5,7 +5,7 @@ from sql_commands import *
 from customtkinter import *
 from styles import *
 import connection
-
+from suggestions import *
 
 class DeletePage(CTkFrame):
 
