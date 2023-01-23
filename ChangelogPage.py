@@ -13,7 +13,6 @@ class ChangeLog(CTkFrame):
         CTkFrame.__init__(self, master)
         style_changelog_comp_page(master)
         session = connection.session()
-
         style = ttk.Style()
 
         style.configure("Treeview",
@@ -31,7 +30,8 @@ class ChangeLog(CTkFrame):
         self.my_tree.pack()
         'tree_scroll.config(command=self.my_tree.yview)'
         self.my_tree['columns'] = ("id", "tstamp", "who", "old_val", "new_val", "operation")
-        self.my_tree.column("#0", minwidth=10, stretch=NO)
+        self.my_tree.column("#0", width=0, stretch=NO)
+        self.my_tree.column("id", anchor=W, width=140)
         self.my_tree.column("tstamp", anchor=W, width=140)
         self.my_tree.column("who", anchor=CENTER, width=140)
         self.my_tree.column("old_val", anchor=CENTER, width=140)
