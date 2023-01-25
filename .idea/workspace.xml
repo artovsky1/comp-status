@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Moved frames and commands to different directories" />
-=======
-    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Added suggestions for revision">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
->>>>>>> 0d7faac51f4648ea3a88ec37507c14b08e8fa3a9
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,11 +63,8 @@
       <workItem from="1674469879641" duration="2223000" />
       <workItem from="1674477883626" duration="2671000" />
       <workItem from="1674492944635" duration="7791000" />
-<<<<<<< HEAD
       <workItem from="1674632769613" duration="1000" />
-      <workItem from="1674632826985" duration="5901000" />
-=======
->>>>>>> 0d7faac51f4648ea3a88ec37507c14b08e8fa3a9
+      <workItem from="1674632826985" duration="6252000" />
     </task>
     <task id="LOCAL-00001" summary="Added suggestions for revision">
       <created>1674470467268</created>
@@ -122,18 +113,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="Moved frames and commands to different directories" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/stan_komp$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674467103171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/stan_komp$LoginPage.coverage" NAME="LoginPage Coverage Results" MODIFIED="1674464991277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/comp_status_py$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674478719477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/comp_status_py$BringBackCompPage.coverage" NAME="BringBackCompPage Coverage Results" MODIFIED="1674637063961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frames" />
-    <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674638555311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-=======
-    <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674502488640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/comp_status_py$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674478719477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
->>>>>>> 0d7faac51f4648ea3a88ec37507c14b08e8fa3a9
+    <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674639080554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/stan_komp$stan_komp.coverage" NAME="stan_komp Coverage Results" MODIFIED="1674468439987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/stan_komp$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674467103171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/stan_komp$LoginPage.coverage" NAME="LoginPage Coverage Results" MODIFIED="1674464991277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
