@@ -73,7 +73,7 @@ def style_change_comp_page(master):
 def style_lookup_comp_page(master):
     master.title_name = "Podgląd stanu komponentów"
     master.title(master.title_name)
-    width, height = 800, 600
+    width, height = 700, 380
     x = (master.winfo_screenwidth() / 2) - (width / 2)
     y = (master.winfo_screenheight() / 2) - (height / 2)
     master.geometry("%dx%d+%d+%d" % (width, height, x, y))
