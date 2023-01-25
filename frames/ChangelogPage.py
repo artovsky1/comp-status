@@ -1,18 +1,19 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from sql_commands import *
 from customtkinter import *
-from styles import *
-import connection
+from functions.sql_commands import *
+from functions.styles import *
+from functions.connection import *
+
 
 class ChangeLog(CTkFrame):
 
     def __init__(self, master):
-        from StartPage import StartPage
+        from frames.StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_changelog_comp_page(master)
-        session = connection.session()
+        create_session = session()
         style = ttk.Style()
 
         style.configure("Treeview",
@@ -47,8 +48,8 @@ class ChangeLog(CTkFrame):
         back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack()
 
-        result = session.execute(SELECT_ALL_CHANGELOG)
+        result = create_session.execute(SELECT_ALL_CHANGELOG)
         rows = result.fetchall()
         for row in rows:
             self.my_tree.insert("", "end", values=(*row,))
-        session.close()
+        create_session.close()

@@ -1,15 +1,15 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from sql_commands import *
+from functions.sql_commands import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote
 from customtkinter import *
 import pyodbc
-from styles import *
-from StartPage import *
-from LoginPage import *
+from functions.styles import *
+from frames.StartPage import StartPage
+from frames.LoginPage import *
 
 
 class Inventory(CTk):

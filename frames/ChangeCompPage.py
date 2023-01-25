@@ -1,20 +1,20 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from sql_commands import *
 from customtkinter import *
-from styles import *
-import connection
+from functions.sql_commands import *
+from functions.styles import *
+from functions.connection import *
 
 
 class ChangeCompPage(CTkFrame):
 
     def __init__(self, master, partnumber, revision, localization):
-        from ChangeTempCompPage import ChangeTempCompPage
-        from StartPage import StartPage
+        from frames.ChangeTempCompPage import ChangeTempCompPage
+        from frames.StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_change_comp_page(master)
-        conn = connection.connection()
+        create_conn = connection()
 
         def empty_fields():
             if self.new_localization_py.get().strip() != "":
@@ -26,7 +26,7 @@ class ChangeCompPage(CTkFrame):
             if messagebox.askyesno("Informacja", "Czy chcesz zmienić lokalizację komponentu?"):
                 values = (self.new_localization_py.get().strip(), self.partnumber_py.get().strip(),
                           self.revision_py.get().strip())
-                conn.execute(CHANGE_COMP_LOC, values)
+                create_conn.execute(CHANGE_COMP_LOC, values)
                 messagebox.showinfo("Powodzenie", "Lokalizacja zmieniona pomyślnie")
                 repeat()
 

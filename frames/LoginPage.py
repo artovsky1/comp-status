@@ -1,11 +1,11 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from sql_commands import *
 from customtkinter import *
-from styles import *
-from StartPage import *
-import connection
+from functions.sql_commands import *
+from functions.styles import *
+from functions.connection import *
+from frames.StartPage import *
 
 
 class LoginPage(CTkFrame):
@@ -13,7 +13,7 @@ class LoginPage(CTkFrame):
     def __init__(self, master):
         CTkFrame.__init__(self, master)
         style_login_page(master)
-        conn = connection.connection()
+        create_conn = connection()
 
         def button_login(*args):
             if all(val != "" for val in (self.username_py.get().strip(), self.password_py.get().strip())):
@@ -28,7 +28,7 @@ class LoginPage(CTkFrame):
                 messagebox.showerror("Błąd", "Wprowadzony login jest nieprawidłowy")
 
         def select_login():
-            return conn.execute(SELECT_LOGIN, (self.username_py.get().strip())).fetchone()
+            return create_conn.execute(SELECT_LOGIN, (self.username_py.get().strip())).fetchone()
 
         def logging():
             if select_password() is not None:
@@ -39,7 +39,7 @@ class LoginPage(CTkFrame):
 
         def select_password():
             values = (self.username_py.get().strip(), self.password_py.get().strip())
-            return conn.execute(SELECT_PASSWORD, values).fetchone()
+            return create_conn.execute(SELECT_PASSWORD, values).fetchone()
 
         def close():
             quit()

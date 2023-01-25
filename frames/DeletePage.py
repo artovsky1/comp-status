@@ -1,45 +1,33 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from sql_commands import *
 from customtkinter import *
-from styles import *
-import connection
+from functions.sql_commands import *
+from functions.styles import *
+from functions.connection import *
+from functions.suggestions import *
 
 
 class DeletePage(CTkFrame):
 
     def __init__(self, master):
-        from StartPage import StartPage
+        from frames.StartPage import StartPage
         CTkFrame.__init__(self, master)
         style_delete_comp_page(master)
-        conn = connection.connection()
-        session = connection.session()
-
-        def list_partnumber():
-            result = session.execute(SELECT_LIST)
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
-
-        def list_revision():
-            result = session.execute(SELECT_LIST_REV, {"partnumber": self.partnumber_py.get().strip()})
-            result_list = [row[0].strip() for row in result]
-            session.close()
-            return result_list
+        create_conn = connection()
 
         def update_partnumber_list(*args):
             self.partnumber_py["values"] = list_partnumber()
 
         def update_revision_list(*args):
-            self.revision_py["values"] = list_revision()
+            self.revision_py["values"] = list_revision(self)
 
         def lookup_comp():
             values = (self.partnumber_py.get().strip(), self.revision_py.get().strip())
-            result = conn.execute(SELECT_COMPONENT, values).fetchone()
+            result = create_conn.execute(SELECT_COMPONENT, values).fetchone()
             if result is not None:
                 if messagebox.askyesno("Informacja", "Czy chcesz usunąć ten komponent?"):
-                    conn.execute(DELETE_COMPONENT, values)
+                    create_conn.execute(DELETE_COMPONENT, values)
                     messagebox.showinfo("Powodzenie", "Komponent został usunięty")
                     clear_entries()
             else:
@@ -53,27 +41,14 @@ class DeletePage(CTkFrame):
             else:
                 master.switch_frame(StartPage)
 
-        def search(event):
-            value = event.widget.get()
-            if value == '':
-                self.partnumber_py['values'] = list_partnumber()
-
-            else:
-                data = []
-
-                for item in list_partnumber():
-                    if value.lower() in item.lower():
-                        data.append(item)
-                    self.partnumber_py['values'] = data
-
         self.partnumber_py = ttk.Combobox(self, width=30, values=list_partnumber())
         self.partnumber_py.grid(row=0, column=1)
-        self.partnumber_py.bind('<KeyRelease>', search)
+        self.partnumber_py.bind('<KeyRelease>', lambda event: search(self, event))
         # self.partnumber_py.bind('<KeyRelease>', update_revision_list)
         self.partnumber_py.bind("<FocusOut>", update_revision_list)
         self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
         self.partnumber_py.bind("<Return>", update_revision_list)
-        self.revision_py = ttk.Combobox(self, width=30, values=list_revision())
+        self.revision_py = ttk.Combobox(self, width=30, values=list_revision(self))
         self.revision_py.grid(row=1, column=1)
 
         self.partnumber_py.focus_set()
