@@ -18,7 +18,7 @@ class Inventory(CTk):
         self.title_name = ""
         self.title(self.title_name)
         self._frame = None
-        self.switch_frame(LoginPage)
+        self.switch_frame(StartPage)
 
     def switch_frame(self, frame_class, *args, **kwargs):
         new_frame = frame_class(self, *args, **kwargs)
