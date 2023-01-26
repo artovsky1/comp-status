@@ -1,11 +1,8 @@
-def style_login_page(master):
-    master.title_name = "Logowanie"
-    master.title(master.title_name)
-    width, height = 800, 600
-    x = (master.winfo_screenwidth() / 2) - (width / 2)
-    y = (master.winfo_screenheight() / 2) - (height / 2)
-    master.geometry("%dx%d+%d+%d" % (width, height, x, y))
+from tkinter import ttk
+from tkinter import *
+from images import *
 
+Font = ('Calibri', 13)
 
 def style_start_page(master):
     master.title_name = "Strona startowa"

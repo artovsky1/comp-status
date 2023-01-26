@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from customtkinter import *
 from functions.sql_commands import *
 from functions.styles import *
 from functions.connection import *
@@ -9,11 +8,11 @@ from functions.suggestions import *
 from frames.ModifyCompPage import *
 
 
-class ModifyTempCompPage(CTkFrame):
+class ModifyTempCompPage(Frame):
 
     def __init__(self, master):
         from frames.StartPage import StartPage
-        CTkFrame.__init__(self, master)
+        Frame.__init__(self, master)
         style_modify_comp_page(master)
         create_conn = connection()
 
@@ -43,13 +42,13 @@ class ModifyTempCompPage(CTkFrame):
 
         self.partnumber_py.focus_set()
 
-        adient_py_label = CTkLabel(self, text="Part number: ")
+        adient_py_label = ttk.Label(self, text="Part number: ")
         adient_py_label.grid(row=0, column=0)
-        revision_py_label = CTkLabel(self, text="Rewizja: ")
+        revision_py_label = ttk.Label(self, text="Rewizja: ")
         revision_py_label.grid(row=1, column=0)
 
-        edit_btn = CTkButton(self, text="Modyfikuj komponent", command=empty_fields)
+        edit_btn = ttk.Button(self, text="Modyfikuj komponent", command=empty_fields)
         edit_btn.grid(row=6, column=1, columnspan=2, pady=10, padx=10, ipadx=50)
 
-        back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
+        back_btn = ttk.Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.grid(row=6, column=0, columnspan=1, pady=10, padx=10, ipadx=65)

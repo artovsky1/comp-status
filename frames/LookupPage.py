@@ -1,17 +1,16 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from customtkinter import *
 from functions.sql_commands import *
 from functions.styles import *
 from functions.connection import *
 
 
-class LookUpPage(CTkFrame):
+class LookUpPage(Frame):
 
     def __init__(self, master):
         from frames.StartPage import StartPage
-        CTkFrame.__init__(self, master)
+        Frame.__init__(self, master)
         style_lookup_comp_page(master)
         create_session = session()
         style = ttk.Style()
@@ -46,7 +45,7 @@ class LookUpPage(CTkFrame):
         self.my_tree.heading("quantity", text="quantity", anchor=CENTER)
         self.my_tree.heading("localization", text="localization", anchor=CENTER)
 
-        back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
+        back_btn = Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack()
 
         result = create_session.execute(SELECT_ALL)

@@ -5,21 +5,20 @@ from functions.sql_commands import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote
-from customtkinter import *
 import pyodbc
 from functions.styles import *
 from frames.StartPage import StartPage
 from frames.LoginPage import *
 
 
-class Inventory(CTk):
+class Inventory(Tk):
     def __init__(self):
-        CTk.__init__(self)
+        Tk.__init__(self)
         self.title_name = ""
         self.title(self.title_name)
         self._frame = None
         self.switch_frame(LoginPage)
-
+        self.config(bg='white')
     def switch_frame(self, frame_class, *args, **kwargs):
         new_frame = frame_class(self, *args, **kwargs)
         if self._frame is not None:
