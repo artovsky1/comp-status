@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Moved frames and commands to different directories">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comp-status.py" beforeDir="false" afterPath="$PROJECT_DIR$/comp-status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/ChangelogPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/ChangelogPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/LookupPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/LookupPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/sql_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/sql_commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/styles.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/styles.py" afterDir="false" />
-    </list>
+    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Moved frames and commands to different directories" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +67,7 @@
       <workItem from="1674632826985" duration="6252000" />
       <workItem from="1674639521540" duration="194000" />
       <workItem from="1674639838265" duration="18000" />
-      <workItem from="1674644489598" duration="3751000" />
+      <workItem from="1674644489598" duration="4193000" />
     </task>
     <task id="LOCAL-00001" summary="Added suggestions for revision">
       <created>1674470467268</created>
@@ -129,7 +121,7 @@
     <SUITE FILE_PATH="coverage/comp_status_py$ModifyTempCompPage.coverage" NAME="ModifyTempCompPage Coverage Results" MODIFIED="1674478719477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/comp_status_py$BringBackCompPage.coverage" NAME="BringBackCompPage Coverage Results" MODIFIED="1674637063961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/frames" />
     <SUITE FILE_PATH="coverage/comp_status_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674639840957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ChangelogPage_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674648274903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChangelogPage_py$comp_status.coverage" NAME="comp-status Coverage Results" MODIFIED="1674648309929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/stan_komp$stan_komp.coverage" NAME="stan_komp Coverage Results" MODIFIED="1674468439987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
