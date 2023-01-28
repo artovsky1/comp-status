@@ -47,6 +47,7 @@ class LookUpPage(Frame):
         self.my_tree.column("project", anchor=CENTER, width=100)
         self.my_tree.column("quantity", anchor=CENTER, width=80)
         self.my_tree.column("localization", anchor=CENTER, width=80)
+<<<<<<< HEAD
         self.my_tree.heading("id", text="id", anchor=CENTER)
         self.my_tree.heading("partnumber", text="partnumber", anchor=CENTER)
         self.my_tree.heading("revision", text="revision", anchor=CENTER)
@@ -57,6 +58,18 @@ class LookUpPage(Frame):
 
         back_btn = Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack()
+=======
+        self.my_tree.heading("id", text="ID", anchor=CENTER)
+        self.my_tree.heading("partnumber", text="Part number", anchor=CENTER)
+        self.my_tree.heading("revision", text="Revision", anchor=CENTER)
+        self.my_tree.heading("description", text="Description", anchor=CENTER)
+        self.my_tree.heading("project", text="Project", anchor=CENTER)
+        self.my_tree.heading("quantity", text="Quantity", anchor=CENTER)
+        self.my_tree.heading("localization", text="Localization", anchor=CENTER)
+
+        back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
+        back_btn.pack(side=BOTTOM, pady=20)
+>>>>>>> 5eb21522a9988cbfe9e3bd480ae2c23728170524
 
         result = create_session.execute(SELECT_ALL)
         rows = result.fetchall()

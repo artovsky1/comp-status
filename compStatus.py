@@ -16,8 +16,12 @@ class Inventory(Tk):
         self.title_name = ""
         self.title(self.title_name)
         self._frame = None
+<<<<<<< HEAD:compStatus.py
         self.switch_frame(LoginPage)
         self.config(bg=BgColor)
+=======
+        self.switch_frame(StartPage)
+>>>>>>> 5eb21522a9988cbfe9e3bd480ae2c23728170524:comp-status.py
 
     def switch_frame(self, frame_class, *args, **kwargs):
         new_frame = frame_class(self, *args, **kwargs)
