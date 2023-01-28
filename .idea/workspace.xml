@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Created a design for login page, cleaned some code" />
+    <list default="true" id="d39443a8-c0dd-44e7-bf4f-9ae805912f46" name="Changes" comment="Created a design for login page, cleaned some code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/ChangelogPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/ChangelogPage.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +75,7 @@
       <workItem from="1674632769613" duration="1000" />
       <workItem from="1674632826985" duration="6252000" />
       <workItem from="1674738881968" duration="5645000" />
-      <workItem from="1674918376067" duration="7571000" />
+      <workItem from="1674918376067" duration="8098000" />
     </task>
     <task id="LOCAL-00001" summary="Added suggestions for revision">
       <created>1674470467268</created>
