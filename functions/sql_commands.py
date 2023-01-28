@@ -41,11 +41,11 @@ CHANGE_COMP_LOC = "UPDATE component_status SET localization = (%s) WHERE partnum
                   " AND revision = (%s)"
 
 # Lookup commands
-SELECT_ALL = "SELECT * FROM component_status"
+SELECT_ALL = "SELECT * FROM component_status ORDER BY id ASC"
 
 # Changelog commands
-SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history"
+SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id DESC"
 
 # Auto Complete commands
-SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status"
-SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%'"
+SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status ORDER BY partnumber ASC"
+SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"

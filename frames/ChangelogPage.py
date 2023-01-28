@@ -11,7 +11,11 @@ class ChangeLog(Frame):
     def __init__(self, master):
         from frames.StartPage import StartPage
         Frame.__init__(self, master)
-        style_changelog_comp_page(master)
+
+        self.config(bg=BgColor)
+        master.title("Historia zmian")
+        master.width, master.height = 800, 600
+
         create_session = session()
         style = ttk.Style()
 
@@ -24,14 +28,19 @@ class ChangeLog(Frame):
                   background=[('selected', '#347083')])
 
         self.pack(pady=10)
-        tree_scroll = Scrollbar(self)
-        tree_scroll.pack(expand=True, fill='both')
-        self.my_tree = ttk.Treeview(self, yscrollcommand=tree_scroll, selectmode='extended')
-        self.my_tree.pack()
-        'tree_scroll.config(command=self.my_tree.yview)'
+
+        tree_frame = ttk.Frame(self)
+        tree_frame.pack()
+
+        self.my_tree = ttk.Treeview(tree_frame, selectmode='extended')
+        self.my_tree.pack(side=LEFT, fill=BOTH, expand=True)
+
+        tree_scroll = ttk.Scrollbar(tree_frame, orient="vertical", command=self.my_tree.yview)
+        tree_scroll.pack(side=RIGHT, fill=Y)
+        self.my_tree.configure(yscrollcommand=tree_scroll.set)
         self.my_tree['columns'] = ("id", "tstamp", "who", "old_val", "new_val", "operation")
         self.my_tree.column("#0", width=0, stretch=NO)
-        self.my_tree.column("id", anchor=W, width=140)
+        self.my_tree.column("id", anchor=W, width=30)
         self.my_tree.column("tstamp", anchor=W, width=140)
         self.my_tree.column("who", anchor=CENTER, width=140)
         self.my_tree.column("old_val", anchor=CENTER, width=140)

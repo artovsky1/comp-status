@@ -15,7 +15,10 @@ class StartPage(Frame):
 
     def __init__(self, master):
         Frame.__init__(self, master)
-        style_start_page(master)
+
+        self.config(bg=BgColor)
+        master.title("Strona startowa")
+        master.width, master.height = 800, 600
 
         ttk.Label(self, text="Stan komponentów").grid(row=0, column=0)
 

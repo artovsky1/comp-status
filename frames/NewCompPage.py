@@ -11,7 +11,12 @@ class NewCompPage(Frame):
     def __init__(self, master):
         from frames.StartPage import StartPage
         Frame.__init__(self, master)
-        style_new_comp_page(master)
+
+        self.config(bg=BgColor)
+        master.title("Nowy komponent")
+        master.width = 800
+        master.height = 600
+
         create_conn = connection()
 
         def button_action():
@@ -60,9 +65,9 @@ class NewCompPage(Frame):
             else:
                 master.switch_frame(StartPage)
 
-        self.partnumber_py = ttk.Entry(self, width=200)
+        self.partnumber_py = ttk.Entry(self)
         self.partnumber_py.grid(row=0, column=1, padx=20, pady=(10, 0))
-        self.revision_py = ttk.Entry(self, width=200)
+        self.revision_py = ttk.Entry(self)
         self.revision_py.grid(row=1, column=1)
         self.description_py = ttk.Combobox(self, values=['2D fleece', '3D fleece', 'PE insert', 'Wire',
                                                          'Frame', 'Clip',
@@ -75,9 +80,9 @@ class NewCompPage(Frame):
                                        state='readonly')
 
         self.project_py.grid(row=3, column=1)
-        self.quantity_py = ttk.Entry(self, width=200)
+        self.quantity_py = ttk.Entry(self)
         self.quantity_py.grid(row=4, column=1)
-        self.localization_py = ttk.Entry(self, width=200)
+        self.localization_py = ttk.Entry(self)
         self.localization_py.grid(row=5, column=1)
 
         self.partnumber_py.focus_set()

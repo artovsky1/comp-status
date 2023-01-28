@@ -13,7 +13,11 @@ class ChangeTempCompPage(Frame):
     def __init__(self, master):
         from frames.StartPage import StartPage
         Frame.__init__(self, master)
-        style_change_comp_page(master)
+
+        self.config(bg=BgColor)
+        master.title("Zmiana lokalizacji komponentu")
+        master.width, master.height = 800, 600
+
         create_conn = connection()
 
         def update_revision_list(*args):
