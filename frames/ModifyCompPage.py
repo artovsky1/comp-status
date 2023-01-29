@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from functions.sql_commands import *
+from database.sql_commands import *
+from database.connection import *
 from functions.styles import *
-from functions.connection import *
 
 
 class ModifyCompPage(Frame):

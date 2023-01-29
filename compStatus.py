@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox, ttk
-from functions.sql_commands import *
+from database.sql_commands import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote
