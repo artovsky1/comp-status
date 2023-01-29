@@ -1,4 +1,3 @@
-# sql_commands for postgres
 
 # Login page
 SELECT_LOGIN = "SELECT username FROM user_data WHERE username = (%s)"

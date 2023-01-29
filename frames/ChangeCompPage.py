@@ -3,7 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from database.sql_commands import *
 from database.connection import *
-from functions.styles import *
+from commands.styles import *
 
 
 class ChangeCompPage(Frame):

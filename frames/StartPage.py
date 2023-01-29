@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from functions.styles import *
+from commands.styles import *
 from frames.BringBackCompPage import *
 from frames.NewCompPage import *
 from frames.ModifyTempCompPage import *

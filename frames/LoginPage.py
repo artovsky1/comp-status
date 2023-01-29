@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox, ttk
 from database.sql_commands import *
 from database.connection import *
-from functions.styles import *
+from commands.styles import *
 from frames.StartPage import *
 
 

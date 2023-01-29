@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import quote
 import pyodbc
-from functions.styles import *
+from commands.styles import *
 from frames.StartPage import StartPage
 from frames.LoginPage import *
 
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     app = Inventory()
     app.mainloop()
 
-# pyinstaller --noconfirm --onedir --windowed --noconsole --add-data "C:/Users/akozyrs/AppData/Local/Programs/Python/Python311/Lib/site-packages/customtkinter;customtkinter/" "C:\Users\akozyrs\Desktop\python\stan_komp.py"
+# pyinstaller --noconfirm --windowed --noconsole "C:\Users\akozyrs\Desktop\python\stan_komp.py"
