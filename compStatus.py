@@ -1,11 +1,9 @@
 from tkinter import *
 from tkinter import messagebox, ttk
-from database.sql_commands import *
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from urllib.parse import quote
-import pyodbc
 from commands.styles import *
+from database.sql_commands import *
 from frames.StartPage import StartPage
 from frames.LoginPage import *
 
@@ -15,16 +13,17 @@ class Inventory(Tk):
         Tk.__init__(self)
         self.title_name = ""
         self.title(self.title_name)
-        self._frame = None
+        self.frame = None
         self.switch_frame(LoginPage)
         self.config(bg=BgColor)
 
+
     def switch_frame(self, frame_class, *args, **kwargs):
         new_frame = frame_class(self, *args, **kwargs)
-        if self._frame is not None:
-            self._frame.destroy()
-        self._frame = new_frame
-        self._frame.pack()
+        if self.frame is not None:
+            self.frame.destroy()
+        self.frame = new_frame
+        self.frame.pack()
         x = (self.winfo_screenwidth() / 2) - (self.width / 2)
         y = (self.winfo_screenheight() / 2) - (self.height / 2)
         self.geometry("%dx%d+%d+%d" % (self.width, self.height, x, y))

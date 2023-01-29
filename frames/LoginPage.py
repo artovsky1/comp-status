@@ -54,10 +54,8 @@ class LoginPage(Frame):
         self.password_py_label = Label(self, text="Hasło: ", font=LabelFont, bg=BgColor)
         self.password_py = ttk.Entry(self, show='*', font=EntryFont)
 
-        self.login_btn = Button(self, text="Zaloguj", compound=CENTER, image=self.button_img, command=button_login,
-                                font=ButtonFont, bg=BgColor, fg=FgButtonColor, border='0')
-        self.exit_btn = Button(self, text="Zamknij", compound=CENTER, image=self.button_img, command=close,
-                               font=ButtonFont, bg=BgColor, fg=FgButtonColor, border='0')
+        self.login_btn = Button(self, text="Zaloguj", image=self.button_img, **ButtonSettings, command=button_login)
+        self.exit_btn = Button(self, text="Zamknij", image=self.button_img, **ButtonSettings, command=close)
 
         Label(self, text="", bg=BgColor).grid(row=0, column=0, columnspan=2)
 
