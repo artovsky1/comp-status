@@ -1,18 +1,21 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from customtkinter import *
-from functions.sql_commands import *
-from functions.styles import *
-from functions.connection import *
+from database.sql_commands import *
+from database.connection import *
+from commands.styles import *
 
 
-class LookUpPage(CTkFrame):
+class LookUpPage(Frame):
 
     def __init__(self, master):
         from frames.StartPage import StartPage
-        CTkFrame.__init__(self, master)
-        style_lookup_comp_page(master)
+        Frame.__init__(self, master)
+
+        self.config(bg=BgColor)
+        master.title("Podgląd stanu komponentów")
+        master.width, master.height = 800, 600
+
         create_session = session()
         style = ttk.Style()
 
@@ -44,15 +47,15 @@ class LookUpPage(CTkFrame):
         self.my_tree.column("project", anchor=CENTER, width=100)
         self.my_tree.column("quantity", anchor=CENTER, width=80)
         self.my_tree.column("localization", anchor=CENTER, width=80)
-        self.my_tree.heading("id", text="ID", anchor=CENTER)
-        self.my_tree.heading("partnumber", text="Part number", anchor=CENTER)
-        self.my_tree.heading("revision", text="Revision", anchor=CENTER)
-        self.my_tree.heading("description", text="Description", anchor=CENTER)
-        self.my_tree.heading("project", text="Project", anchor=CENTER)
-        self.my_tree.heading("quantity", text="Quantity", anchor=CENTER)
-        self.my_tree.heading("localization", text="Localization", anchor=CENTER)
+        self.my_tree.heading("id", text="id", anchor=CENTER)
+        self.my_tree.heading("partnumber", text="partnumber", anchor=CENTER)
+        self.my_tree.heading("revision", text="revision", anchor=CENTER)
+        self.my_tree.heading("description", text="description", anchor=CENTER)
+        self.my_tree.heading("project", text="project", anchor=CENTER)
+        self.my_tree.heading("quantity", text="quantity", anchor=CENTER)
+        self.my_tree.heading("localization", text="localization", anchor=CENTER)
 
-        back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
+        back_btn = Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack(side=BOTTOM, pady=20)
 
         result = create_session.execute(SELECT_ALL)

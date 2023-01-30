@@ -1,18 +1,20 @@
 from tkinter import *
-from tkinter import messagebox
-from tkinter import ttk
-from customtkinter import *
-from functions.sql_commands import *
-from functions.styles import *
-from functions.connection import *
+from tkinter import messagebox, ttk
+from database.sql_commands import *
+from database.connection import *
+from commands.styles import *
 from frames.StartPage import *
 
 
-class LoginPage(CTkFrame):
+class LoginPage(Frame):
 
     def __init__(self, master):
-        CTkFrame.__init__(self, master)
-        style_login_page(master)
+        Frame.__init__(self, master)
+
+        self.config(bg=BgColor)
+        master.title("Logowanie")
+        master.width, master.height = 350, 250
+
         create_conn = connection()
 
         def button_login(*args):
@@ -44,24 +46,36 @@ class LoginPage(CTkFrame):
         def close():
             quit()
 
-        self.username_py = CTkEntry(self, width=200)
-        self.username_py.grid(row=1, column=1)
-        self.password_py = CTkEntry(self, width=200, show='*')
-        self.password_py.grid(row=2, column=1)
+        self.button_img = PhotoImage(file="images/Button.png")
+
+        self.username_py_label = Label(self, text="Login: ", font=LabelFont, bg=BgColor)
+        self.username_py = ttk.Entry(self, font=EntryFont)
+
+        self.password_py_label = Label(self, text="Hasło: ", font=LabelFont, bg=BgColor)
+        self.password_py = ttk.Entry(self, show='*', font=EntryFont)
+
+        self.login_btn = Button(self, text="Zaloguj", image=self.button_img, **ButtonSettings, command=button_login)
+        self.exit_btn = Button(self, text="Zamknij", image=self.button_img, **ButtonSettings, command=close)
+
+        Label(self, text="", bg=BgColor).grid(row=0, column=0, columnspan=2)
+
+        self.username_py_label.grid(row=1, column=0, padx=10, pady=10, sticky='E')
+        self.username_py.grid(row=1, column=1, padx=10, pady=10, sticky='W')
+
+        self.password_py_label.grid(row=2, column=0, padx=10, pady=10, sticky='E')
+        self.password_py.grid(row=2, column=1, padx=10, pady=10, sticky='W')
+
+        Label(self, text="", bg=BgColor).grid(row=3, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=4, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=5, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=6, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=7, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=8, column=0, columnspan=2)
+
+        self.login_btn.place(relx=0.75, rely=0.75, anchor='center')
+        self.exit_btn.place(relx=0.25, rely=0.75, anchor='center')
+
         self.username_py.bind("<Return>", button_login)
         self.password_py.bind("<Return>", button_login)
 
         self.username_py.focus_set()
-
-        username_py_label = CTkLabel(self, text="Login: ")
-        username_py_label.grid(row=1, column=0)
-        password_py_label = CTkLabel(self, text="Hasło: ")
-        password_py_label.grid(row=2, column=0)
-
-        # Create a update button
-        login_btn = CTkButton(self, text="Zaloguj", command=button_login)
-        login_btn.grid(row=6, column=1, columnspan=2, pady=10, padx=10, ipadx=50)
-
-        # Create a back button
-        exit_btn = CTkButton(self, text="Zamknij", command=close)
-        exit_btn.grid(row=6, column=0, columnspan=1, pady=10, padx=10, ipadx=65)

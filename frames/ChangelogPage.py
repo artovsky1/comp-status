@@ -1,18 +1,21 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from customtkinter import *
-from functions.sql_commands import *
-from functions.styles import *
-from functions.connection import *
+from database.sql_commands import *
+from database.connection import *
+from commands.styles import *
 
 
-class ChangeLog(CTkFrame):
+class ChangeLog(Frame):
 
     def __init__(self, master):
         from frames.StartPage import StartPage
-        CTkFrame.__init__(self, master)
-        style_changelog_comp_page(master)
+        Frame.__init__(self, master)
+
+        self.config(bg=BgColor)
+        master.title("Historia zmian")
+        master.width, master.height = 800, 600
+
         create_session = session()
         style = ttk.Style()
 
@@ -50,7 +53,7 @@ class ChangeLog(CTkFrame):
         self.my_tree.heading("new_val", text="new_value", anchor=CENTER)
         self.my_tree.heading("operation", text="action", anchor=CENTER)
 
-        back_btn = CTkButton(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
+        back_btn = Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
         back_btn.pack()
 
         result = create_session.execute(SELECT_ALL_CHANGELOG)

@@ -1,5 +1,5 @@
-from functions.connection import *
-from functions.sql_commands import *
+from database.connection import *
+from database.sql_commands import *
 
 conn = connection()
 session = session()
