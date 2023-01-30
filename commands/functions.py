@@ -1,8 +1,17 @@
 from database.connection import *
 from database.sql_commands import *
+import os
+import sys
 
 conn = connection()
 session = session()
+
+
+def get_path(filename):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, filename)
+    else:
+        return filename
 
 
 def list_partnumber():

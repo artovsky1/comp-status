@@ -16,7 +16,8 @@ class Inventory(Tk):
         self.frame = None
         self.switch_frame(LoginPage)
         self.config(bg=BgColor)
-
+        icon = PhotoImage(file=get_path("icon_small.png"))
+        self.iconphoto(True, icon)
 
     def switch_frame(self, frame_class, *args, **kwargs):
         new_frame = frame_class(self, *args, **kwargs)
@@ -33,4 +34,4 @@ if __name__ == "__main__":
     app = Inventory()
     app.mainloop()
 
-# pyinstaller --noconfirm --windowed --noconsole "C:\Users\akozyrs\Desktop\python\stan_komp.py"
+# pyinstaller --noconfirm --onefile --windowed --add-data "C:\Users\akozyrs\Desktop\stan_komp\icon_small.png;." --add-data "C:\Users\akozyrs\Desktop\stan_komp\Button.png;." --icon=C:\Users\akozyrs\Desktop\stan_komp\icon_big.png "C:\Users\akozyrs\Desktop\stan_komp\compStatus.py"

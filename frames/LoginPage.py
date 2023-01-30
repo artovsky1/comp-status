@@ -4,6 +4,7 @@ from database.sql_commands import *
 from database.connection import *
 from commands.styles import *
 from frames.StartPage import *
+from PIL import Image
 
 
 class LoginPage(Frame):
@@ -46,7 +47,7 @@ class LoginPage(Frame):
         def close():
             quit()
 
-        self.button_img = PhotoImage(file="images/Button.png")
+        self.button_img = PhotoImage(file=get_path("Button.png"))
 
         self.username_py_label = Label(self, text="Login: ", font=LabelFont, bg=BgColor)
         self.username_py = ttk.Entry(self, font=EntryFont)

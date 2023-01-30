@@ -43,8 +43,8 @@ CHANGE_COMP_LOC = "UPDATE component_status SET localization = (%s) WHERE partnum
 SELECT_ALL = "SELECT * FROM component_status ORDER BY id ASC"
 
 # Changelog commands
-SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id DESC"
-SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id ASC"
+
+SELECT_ALL_CHANGELOG = SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id DESC"
 
 
 # Auto Complete commands

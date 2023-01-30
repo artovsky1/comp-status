@@ -5,4 +5,4 @@ BgColor = '#FFFFFF'
 FgButtonColor = '#FFFFFF'
 TitleFont = ('Calibri', 18)
 ButtonSettings = {'compound': 'center', 'font': ButtonFont, 'bg': BgColor, 'fg': FgButtonColor, 'border': '0',
-                  'wraplength': '100', 'activebackground': '#00ff00'}
+                  'wraplength': '100', 'activebackground': BgColor, 'activeforeground' : FgButtonColor}

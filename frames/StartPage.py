@@ -9,7 +9,7 @@ from frames.BringCompPage import *
 from frames.ChangeTempCompPage import *
 from frames.LookupPage import *
 from frames.ChangelogPage import *
-
+from PIL import Image
 
 class StartPage(Frame):
 
@@ -20,7 +20,7 @@ class StartPage(Frame):
         master.title("Strona startowa")
         master.width, master.height = 800, 600
 
-        self.button_img = PhotoImage(file="images/Button.png")
+        self.button_img = PhotoImage(file=get_path("Button.png"))
 
         Label(self, text="Stan komponentów", bg=BgColor).grid(row=0, column=0)
 
