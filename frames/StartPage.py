@@ -11,6 +11,7 @@ from frames.LookupPage import *
 from frames.ChangelogPage import *
 from PIL import Image
 
+
 class StartPage(Frame):
 
     def __init__(self, master):
@@ -18,39 +19,66 @@ class StartPage(Frame):
 
         self.config(bg=BgColor)
         master.title("Strona startowa")
-        master.width, master.height = 800, 600
+        master.width, master.height = 560, 400
 
+
+
+        self.background_img = PhotoImage(file=get_path("Background.png"))
         self.button_img = PhotoImage(file=get_path("Button.png"))
 
-        Label(self, text="Stan komponentów", bg=BgColor).grid(row=0, column=0)
+        self.background_label = Label(self, image=self.background_img)
+        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        button0 = Button(self, text="Dodaj komponent", image=self.button_img, **ButtonSettings, command=lambda: master.switch_frame(NewCompPage))
-        button0.grid(row=1, column=0, columnspan=1, pady=10, padx=10, ipadx=50)
+        pageTitle = Label(self, text="Stan komponentów", bg=BgStartColor, font=TitleFont, fg=FgButtonColor)
+
+        button0 = Button(self, text="Dodaj komponent", image=self.button_img, **ButtonSettings,
+                         command=lambda: master.switch_frame(NewCompPage))
 
         button1 = Button(self, text="Modyfikuj komponent", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(ModifyTempCompPage))
-        button1.grid(row=1, column=1, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button2 = Button(self, text="Usuń komponent",
                          image=self.button_img, **ButtonSettings, command=lambda: master.switch_frame(DeletePage))
-        button2.grid(row=1, column=2, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button3 = Button(self, text="Przyjmij komponent", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(BringBackCompPage))
-        button3.grid(row=2, column=0, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button4 = Button(self, text="Wydaj komponent", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(BringCompPage))
-        button4.grid(row=2, column=1, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button5 = Button(self, text="Zmień lokalizację", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(ChangeTempCompPage))
-        button5.grid(row=2, column=2, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button6 = Button(self, text="Podgląd stanu", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(LookUpPage))
-        button6.grid(row=3, column=0, columnspan=1, pady=10, padx=10, ipadx=50)
 
         button7 = Button(self, text="Historia zmian", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(ChangeLog))
-        button7.grid(row=3, column=1, columnspan=1, pady=10, padx=10, ipadx=50)
+
+        pageTitle.grid(row=0, column=0, pady=20, padx=10)
+
+        Label(self, text="", bg=BgColor).grid(row=1, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=2, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=3, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=4, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=5, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=6, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=7, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=8, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=9, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=10, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=11, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=12, column=0, columnspan=18)
+        Label(self, text="", bg=BgColor).grid(row=13, column=0, columnspan=18)
+        Label(self, text="ddddddddddddddddddddddddddddd", bg=BgColor, fg=FgButtonColor).grid(row=14, column=14,
+                                                                                             columnspan=18)
+
+        button0.place(relx=0.22, rely=0.35, anchor='center')
+        button1.place(relx=0.22, rely=0.6, anchor='center')
+        button2.place(relx=0.22, rely=0.85, anchor='center')
+        button3.place(relx=0.5, rely=0.35, anchor='center')
+        button4.place(relx=0.5, rely=0.6, anchor='center')
+        button5.place(relx=0.5, rely=0.85, anchor='center')
+        button6.place(relx=0.78, rely=0.35, anchor='center')
+        button7.place(relx=0.78, rely=0.6, anchor='center')
+
