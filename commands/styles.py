@@ -1,4 +1,4 @@
-EntryFont = ('Calibri', 13)
+EntryFont = ('Calibri', 12)
 LabelFont = ('Calibri', 14)
 ButtonFont = ('Calibri', 13, 'bold')
 BgColor = '#FFFFFF'

@@ -14,7 +14,7 @@ class Inventory(Tk):
         self.title_name = ""
         self.title(self.title_name)
         self.frame = None
-        self.switch_frame(StartPage)
+        self.switch_frame(LoginPage)
         self.config(bg=BgColor)
         icon = PhotoImage(file=get_path("icon_small.png"))
         self.iconphoto(True, icon)
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     app = Inventory()
     app.mainloop()
 
-# pyinstaller --noconfirm --onefile --windowed --add-data "C:\Users\akozyrs\Desktop\stan_komp\icon_small.png;." --add-data "C:\Users\akozyrs\Desktop\stan_komp\Button.png;." --icon=C:\Users\akozyrs\Desktop\stan_komp\icon_big.png "C:\Users\akozyrs\Desktop\stan_komp\compStatus.py"
+# pyinstaller --noconfirm --onefile --windowed --add-data "C:\Users\akozyrs\Desktop\stan_komp\background.png;." --add-data "C:\Users\akozyrs\Desktop\stan_komp\icon_small.png;." --add-data "C:\Users\akozyrs\Desktop\stan_komp\Button.png;." --icon=C:\Users\akozyrs\Desktop\stan_komp\icon_big.png "C:\Users\akozyrs\Desktop\stan_komp\compStatus.py"

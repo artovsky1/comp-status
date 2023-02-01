@@ -73,12 +73,12 @@ class StartPage(Frame):
         Label(self, text="ddddddddddddddddddddddddddddd", bg=BgColor, fg=FgButtonColor).grid(row=14, column=14,
                                                                                              columnspan=18)
 
-        button0.place(relx=0.22, rely=0.35, anchor='center')
-        button1.place(relx=0.22, rely=0.6, anchor='center')
-        button2.place(relx=0.22, rely=0.85, anchor='center')
-        button3.place(relx=0.5, rely=0.35, anchor='center')
-        button4.place(relx=0.5, rely=0.6, anchor='center')
-        button5.place(relx=0.5, rely=0.85, anchor='center')
-        button6.place(relx=0.78, rely=0.35, anchor='center')
-        button7.place(relx=0.78, rely=0.6, anchor='center')
+        button0.place(relx=0.2, rely=0.38, anchor='center')
+        button1.place(relx=0.2, rely=0.63, anchor='center')
+        button2.place(relx=0.2, rely=0.88, anchor='center')
+        button3.place(relx=0.5, rely=0.38, anchor='center')
+        button4.place(relx=0.5, rely=0.63, anchor='center')
+        button5.place(relx=0.5, rely=0.88, anchor='center')
+        button6.place(relx=0.8, rely=0.38, anchor='center')
+        button7.place(relx=0.8, rely=0.63, anchor='center')
 

@@ -15,7 +15,7 @@ class DeletePage(Frame):
 
         self.config(bg=BgColor)
         master.title("Usuń komponent")
-        master.width, master.height = 800, 600
+        master.width, master.height = 350, 250
 
         create_conn = connection()
 
@@ -44,27 +44,41 @@ class DeletePage(Frame):
             else:
                 master.switch_frame(StartPage)
 
-        self.partnumber_py = ttk.Combobox(self, width=30, values=list_partnumber())
-        self.partnumber_py.grid(row=0, column=1)
+        self.button_img = PhotoImage(file=get_path("Button.png"))
+
+        self.partnumber_py = ttk.Combobox(self, width=20, values=list_partnumber())
+
         self.partnumber_py.bind('<KeyRelease>', lambda event: search(self, event))
         # self.partnumber_py.bind('<KeyRelease>', update_revision_list)
         self.partnumber_py.bind("<FocusOut>", update_revision_list)
         self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
         self.partnumber_py.bind("<Return>", update_revision_list)
-        self.revision_py = ttk.Combobox(self, width=30, values=list_revision(self))
-        self.revision_py.grid(row=1, column=1)
+        self.revision_py = ttk.Combobox(self, width=20, values=list_revision(self))
 
         self.partnumber_py.focus_set()
 
-        adient_py_label = ttk.Label(self, text="Part number: ")
-        adient_py_label.grid(row=0, column=0)
-        revision_py_label = ttk.Label(self, text="Rewizja: ")
-        revision_py_label.grid(row=1, column=0)
+        Label(self, text="", bg=BgColor).grid(row=0, column=0, columnspan=2)
 
-        edit_btn = ttk.Button(self, text="Usuń komponent", command=lookup_comp)
-        edit_btn.grid(row=6, column=1, columnspan=2, pady=10, padx=10, ipadx=50)
-
-        back_btn = ttk.Button(self, text="Wróć", command=lambda: master.switch_frame(StartPage))
-        back_btn.grid(row=6, column=0, columnspan=1, pady=10, padx=10, ipadx=65)
+        self.partnumber_py_label = Label(self, text="Part number: ", font=LabelFont, bg=BgColor)
+        self.revision_py_label = Label(self, text="Rewizja: ", font=LabelFont, bg=BgColor)
+        self.edit_btn = Button(self, text="Usuń komponent", image=self.button_img, **ButtonSettings,
+                                   command=lookup_comp)
+        self.back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
+                                   command=lambda: master.switch_frame(StartPage))
 
         entry_widgets = [self.partnumber_py, self.revision_py]
+
+        self.partnumber_py_label.grid(row=1, column=0, padx=10, pady=10, sticky='E')
+        self.revision_py_label.grid(row=2, column=0, padx=10, pady=10, sticky='E')
+        self.partnumber_py.grid(row=1, column=1, padx=10, pady=10, sticky='W')
+        self.revision_py.grid(row=2, column=1, padx=10, pady=10, sticky='W')
+
+        Label(self, text="", bg=BgColor).grid(row=3, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=4, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=5, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=6, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=7, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=8, column=0, columnspan=2)
+
+        self.edit_btn.place(relx=0.75, rely=0.75, anchor='center')
+        self.back_btn.place(relx=0.25, rely=0.75, anchor='center')

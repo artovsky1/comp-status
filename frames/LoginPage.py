@@ -45,7 +45,7 @@ class LoginPage(Frame):
             return create_conn.execute(SELECT_PASSWORD, values).fetchone()
 
         def close():
-            quit()
+            master.destroy()
 
         self.button_img = PhotoImage(file=get_path("Button.png"))
 
