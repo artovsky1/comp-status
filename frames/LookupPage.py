@@ -18,7 +18,7 @@ class LookUpPage(Frame):
         master.width, master.height = 730, 470
         self.button_img = PhotoImage(file=get_path("Button.png"))
 
-        def search(*args):
+        def a_search(*args):
             what_to_search = [k for k, v in sort_options.items() if v == sort_var.get()][0]
             search_query = self.search_entry.get()
             result = create_session.execute(get_search_query(what_to_search, search_query))
@@ -28,15 +28,33 @@ class LookUpPage(Frame):
                 self.my_tree.insert("", "end", values=(*row,))
             create_session.close()
 
-        def sort(order):
+        self.previous_column = None
+        self.previous_order = "ASC"
+
+        def sort_treeview(column, order):
             what_to_search = [k for k, v in sort_options.items() if v == sort_var.get()][0]
             search_query = self.search_entry.get()
             result = create_session.execute(get_sort_query(what_to_search, order, search_query))
             rows = result.fetchall()
             self.my_tree.delete(*self.my_tree.get_children())
-            for row in rows:
+
+            # Keep track of the order of the previous sort
+            if self.previous_column == column:
+                if self.previous_order == "ASC":
+                    order = "DESC"
+                else:
+                    order = "ASC"
+            self.previous_column = column
+            self.previous_order = order
+
+            if order == "DESC":
+                reverse_order = True
+            else:
+                reverse_order = False
+            sorted_rows = sorted(rows, key=lambda row_a: row_a[self.my_tree['columns'].index(column)],
+                                 reverse=reverse_order)
+            for row in sorted_rows:
                 self.my_tree.insert("", "end", values=(*row,))
-            create_session.close()
 
         style = ttk.Style()
 
@@ -51,7 +69,7 @@ class LookUpPage(Frame):
         sort_var.set("Numer referencji")
 
         sort_options = {"": "", "id": "ID", "partnumber": "Numer referencji", "revision": "Rewizja", "description":
-            "Opis", "project": "Projekt", "quantity": "Ilość", "localization": "Lokalizacja"}
+                        "Opis", "project": "Projekt", "quantity": "Ilość", "localization": "Lokalizacja"}
         sort_dropdown = ttk.OptionMenu(sort_frame, sort_var, *sort_options.values())
         sort_dropdown.pack(side=LEFT, padx=25, pady=10)
         sort_dropdown.configure(width=15)
@@ -59,13 +77,7 @@ class LookUpPage(Frame):
         self.search_entry = ttk.Entry(sort_frame)
         self.search_entry.pack(side=LEFT, padx=25, pady=10)
 
-        asc_sort_btn = ttk.Button(sort_frame, text="Sortuj Rosnąco", command=lambda: sort("ASC"))
-        asc_sort_btn.pack(side=LEFT, padx=25, pady=10)
-
-        desc_sort_btn = ttk.Button(sort_frame, text="Sortuj Malejąco", command=lambda: sort("DESC"))
-        desc_sort_btn.pack(side=LEFT, padx=25, pady=10)
-
-        self.search_entry.bind('<KeyRelease>', search)
+        self.search_entry.bind('<KeyRelease>', a_search)
 
         tree_frame = ttk.Frame(self)
         tree_frame.pack()
@@ -92,6 +104,10 @@ class LookUpPage(Frame):
         self.my_tree.heading("project", text="Projekt", anchor=CENTER)
         self.my_tree.heading("quantity", text="Ilość", anchor=CENTER)
         self.my_tree.heading("localization", text="Lokalizacja", anchor=CENTER)
+
+        for col in self.my_tree['columns']:
+            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "ASC"))
+            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "DESC"))
 
         back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                           command=lambda: master.switch_frame(StartPage))
