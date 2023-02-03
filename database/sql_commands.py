@@ -1,4 +1,3 @@
-
 # Login page
 SELECT_LOGIN = "SELECT username FROM user_data WHERE username = (%s)"
 SELECT_PASSWORD = "SELECT username, password FROM user_data WHERE username = (%s) AND password = (%s)"
@@ -43,16 +42,27 @@ CHANGE_COMP_LOC = "UPDATE component_status SET localization = (%s) WHERE partnum
 SELECT_ALL = "SELECT * FROM component_status ORDER BY id ASC"
 
 
+def get_search_query(what_to_search, search_query):
+    return f"SELECT * FROM component_status WHERE {what_to_search} LIKE '%{search_query}%'"
+
+
+def get_sort_query(what_to_search, order, search_query):
+    return f"SELECT * FROM component_status WHERE {what_to_search} LIKE '%{search_query}%' ORDER BY {what_to_search} {order}"
+
+
 # Changelog commands
 SELECT_ALL_CHANGELOG = SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id DESC"
 
 
+
+def get_search_changelog(search_query):
+    return f"SELECT id, datetime, hostname, old_value, new_value, action FROM komponentyLOG WHERE old_value LIKE '%{search_query}%' OR new_value LIKE '%{search_query}%' ORDER BY id DESC"
+
+
 # Auto Complete commands
 SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status ORDER BY partnumber ASC"
-SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"
+SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM stan_komponentow WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"
 
-def get_search_query(what_to_search, search_query):
-    return f"SELECT * FROM component_status WHERE cast({what_to_search} as text) LIKE '%{search_query}%'"
-
-def get_sort_query(what_to_search, order, search_query):
-    return f"SELECT * FROM component_status WHERE cast({what_to_search} as text) LIKE '%{search_query}%' ORDER BY {what_to_search} {order}"
+# Project and desc list
+DESC_LIST = "SELECT DISTINCT(description) FROM component_status ORDER BY description ASC"
+PROJECT_LIST = "SELECT DISTINCT(project) FROM component_status ORDER BY project ASC"

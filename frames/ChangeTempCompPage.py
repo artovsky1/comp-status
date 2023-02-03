@@ -38,7 +38,6 @@ class ChangeTempCompPage(Frame):
 
         self.partnumber_py = ttk.Combobox(self, width=20, values=list_partnumber())
         self.partnumber_py.bind('<KeyRelease>', lambda event: search(self, event))
-        # self.partnumber_py.bind('<KeyPress>', update_revision_list)
         self.partnumber_py.bind("<FocusOut>", update_revision_list)
         self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
         self.partnumber_py.bind("<Return>", update_revision_list)

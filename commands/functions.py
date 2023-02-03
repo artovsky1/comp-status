@@ -40,3 +40,41 @@ def search(self, event):
             if value.lower() in item.lower():
                 data.append(item)
             self.partnumber_py['values'] = data
+
+def list_projects():
+    result = session.execute(PROJECT_LIST)
+    result_list = [row[0].strip() for row in result]
+    session.close()
+    return result_list
+
+def search_project(self, event):
+    value = event.widget.get()
+    if value == '':
+        self.project_py['values'] = list_projects()
+
+    else:
+        data = []
+
+        for item in list_projects():
+            if value.lower() in item.lower():
+                data.append(item)
+            self.project_py['values'] = data
+
+def list_desc():
+    result = session.execute(DESC_LIST)
+    result_list = [row[0].strip() for row in result]
+    session.close()
+    return result_list
+
+def search_desc(self, event):
+    value = event.widget.get()
+    if value == '':
+        self.description_py['values'] = list_desc()
+
+    else:
+        data = []
+
+        for item in list_desc():
+            if value.lower() in item.lower():
+                data.append(item)
+            self.description_py['values'] = data

@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from database.sql_commands import *
 from database.connection import *
+from commands.functions import *
 from commands.styles import *
 
 
@@ -66,26 +67,24 @@ class ModifyCompPage(Frame):
             else:
                 master.switch_frame(StartPage)
 
-        self.partnumber_py = ttk.Entry(self, width=200)
+        self.partnumber_py = ttk.Entry(self)
         self.partnumber_py.insert(0, partnumber.strip())
         self.partnumber_py.grid(row=0, column=1)
-        self.revision_py = ttk.Entry(self, width=200)
+        self.revision_py = ttk.Entry(self)
         self.revision_py.insert(0, revision.strip())
         self.revision_py.grid(row=1, column=1)
-        self.description_py = ttk.Combobox(self, values=['2D fleece', '3D fleece', 'PE insert', 'Wire',
-                                                         'ttk.Frame', 'Clip',
-                                                         'PUR insert', 'Hook tape', 'Cut foam', 'Sealing fleece',
-                                                         'Spacer',
-                                                         'Chip insert'])
+        self.description_py = ttk.Combobox(self, values=list_desc())
+        self.description_py.bind('<KeyRelease>', lambda event: search_desc(self, event))
         self.description_py.insert(0, description.strip())
         self.description_py.grid(row=2, column=1)
-        self.project_py = ttk.Combobox(self, values=['Porsche G3', 'Opel OV', 'CDPO', 'Volvo GPA'])
-        self.project_py.insert(0, project.strip())  # Set the selected item to the first item in the list
+        self.project_py = ttk.Combobox(self, values=list_projects())
+        self.project_py.bind('<KeyRelease>', lambda event: search_project(self, event))
+        self.project_py.insert(0, project.strip())
         self.project_py.grid(row=3, column=1)
-        self.quantity_py = ttk.Entry(self, width=200)
+        self.quantity_py = ttk.Entry(self)
         self.quantity_py.insert(0, quantity)
         self.quantity_py.grid(row=4, column=1)
-        self.localization_py = ttk.Entry(self, width=200)
+        self.localization_py = ttk.Entry(self)
         self.localization_py.insert(0, localization.strip())
         self.localization_py.grid(row=5, column=1)
 

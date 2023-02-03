@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from database.sql_commands import *
 from database.connection import *
+from commands.functions import *
 from commands.styles import *
 
 
@@ -69,16 +70,11 @@ class NewCompPage(Frame):
         self.partnumber_py.grid(row=0, column=1, padx=20, pady=(10, 0))
         self.revision_py = ttk.Entry(self)
         self.revision_py.grid(row=1, column=1)
-        self.description_py = ttk.Combobox(self, values=['2D fleece', '3D fleece', 'PE insert', 'Wire',
-                                                         'Frame', 'Clip',
-                                                         'PUR insert', 'Hook tape', 'Cut foam',
-                                                         'Sealing fleece',
-                                                         'Spacer', 'Chip insert'], state='readonly')
-
+        self.description_py = ttk.Combobox(self, values=list_desc())
+        self.description_py.bind('<KeyRelease>', lambda event: search_desc(self, event))
         self.description_py.grid(row=2, column=1)
-        self.project_py = ttk.Combobox(self, values=['Porsche G3', 'Opel OV', 'CDPO', 'Volvo GPA'],
-                                       state='readonly')
-
+        self.project_py = ttk.Combobox(self, values=list_projects())
+        self.project_py.bind('<KeyRelease>', lambda event: search_project(self, event))
         self.project_py.grid(row=3, column=1)
         self.quantity_py = ttk.Entry(self)
         self.quantity_py.grid(row=4, column=1)
