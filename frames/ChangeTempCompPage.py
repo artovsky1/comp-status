@@ -46,9 +46,7 @@ class ChangeTempCompPage(Frame):
         self.partnumber_py.focus_set()
 
         self.partnumber_py_label = Label(self, text="Part number: ", font=LabelFont, bg=BgColor)
-        self.partnumber_py_label.grid(row=0, column=0)
         self.revision_py_label = Label(self, text="Rewizja: ", font=LabelFont, bg=BgColor)
-        self.revision_py_label.grid(row=1, column=0)
 
         self.edit_btn = Button(self, text="Zmień lokalizację", image=self.button_img, **ButtonSettings,
                                command=empty_fields)

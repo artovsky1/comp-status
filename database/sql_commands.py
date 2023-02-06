@@ -61,7 +61,7 @@ def get_search_changelog(search_query):
 
 # Auto Complete commands
 SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status ORDER BY partnumber ASC"
-SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM stan_komponentow WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"
+SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"
 
 # Project and desc list
 DESC_LIST = "SELECT DISTINCT(description) FROM component_status ORDER BY description ASC"

@@ -14,7 +14,7 @@ class Inventory(Tk):
         self.title_name = ""
         self.title(self.title_name)
         self.frame = None
-        self.switch_frame(LoginPage)
+        self.switch_frame(StartPage)
         self.config(bg=BgColor)
         icon = PhotoImage(file=get_path("icon_small.png"))
         self.iconphoto(True, icon)
