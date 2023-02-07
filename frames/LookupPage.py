@@ -12,7 +12,7 @@ class LookUpPage(Frame):
     def __init__(self, master):
         from frames.StartPage import StartPage
         Frame.__init__(self, master)
-        create_session = session()
+        session = create_session()
         self.config(bg=BgColor)
         master.title("Podgląd stanu komponentów")
         master.width, master.height = 730, 470
@@ -21,12 +21,12 @@ class LookUpPage(Frame):
         def a_search(*args):
             what_to_search = [k for k, v in sort_options.items() if v == sort_var.get()][0]
             search_query = self.search_entry.get()
-            result = create_session.execute(get_search_query(what_to_search, search_query))
+            result = session.execute(get_search_query(what_to_search, search_query))
             rows = result.fetchall()
             self.my_tree.delete(*self.my_tree.get_children())
             for row in rows:
                 self.my_tree.insert("", "end", values=(*row,))
-            create_session.close()
+            session.close()
 
         self.previous_column = None
         self.previous_order = "ASC"
@@ -34,7 +34,7 @@ class LookUpPage(Frame):
         def sort_treeview(column, order):
             what_to_search = [k for k, v in sort_options.items() if v == sort_var.get()][0]
             search_query = self.search_entry.get()
-            result = create_session.execute(get_sort_query(what_to_search, order, search_query))
+            result = session.execute(get_sort_query(what_to_search, order, search_query))
             rows = result.fetchall()
             self.my_tree.delete(*self.my_tree.get_children())
 
@@ -55,6 +55,7 @@ class LookUpPage(Frame):
                                  reverse=reverse_order)
             for row in sorted_rows:
                 self.my_tree.insert("", "end", values=(*row,))
+            session.close()
 
         style = ttk.Style()
 
@@ -113,8 +114,8 @@ class LookUpPage(Frame):
                           command=lambda: master.switch_frame(StartPage))
         back_btn.pack(side=BOTTOM, pady=10)
 
-        results = create_session.execute(SELECT_ALL)
+        results = session.execute(SELECT_ALL)
         all_rows = results.fetchall()
         for a_row in all_rows:
             self.my_tree.insert("", "end", values=(*a_row,))
-        create_session.close()
+        session.close()

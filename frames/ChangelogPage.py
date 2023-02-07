@@ -12,7 +12,7 @@ class ChangeLog(Frame):
     def __init__(self, master):
         from frames.StartPage import StartPage
         Frame.__init__(self, master)
-        create_session = session()
+        session = create_session()
         self.config(bg=BgColor)
         master.title("Historia zmian")
         master.width, master.height = 850, 470
@@ -20,39 +20,12 @@ class ChangeLog(Frame):
 
         def a_search(*args):
             search_query = self.search_entry.get()
-            result = create_session.execute(get_search_changelog(search_query))
+            result = session.execute(get_search_changelog(search_query))
             rows = result.fetchall()
             self.my_tree.delete(*self.my_tree.get_children())
             for row in rows:
                 self.my_tree.insert("", "end", values=(*row,))
-            create_session.close()
-
-        '''self.previous_column = None
-        self.previous_order = "ASC"'''
-
-        '''def sort_treeview(column, order):
-            search_query = self.search_entry.get()
-            result = create_session.execute(get_sort_changelog(order, search_query))
-            rows = result.fetchall()
-            self.my_tree.delete(*self.my_tree.get_children())
-
-            # Keep track of the order of the previous sort
-            if self.previous_column == column:
-                if self.previous_order == "ASC":
-                    order = "DESC"
-                else:
-                    order = "ASC"
-            self.previous_column = column
-            self.previous_order = order
-
-            if order == "DESC":
-                reverse_order = True
-            else:
-                reverse_order = False
-            sorted_rows = sorted(rows, key=lambda row_a: row_a[self.my_tree['columns'].index(column)],
-                                 reverse=reverse_order)
-            for row in sorted_rows:
-                self.my_tree.insert("", "end", values=(*row,))'''
+            session.close()
 
         style = ttk.Style()
 
@@ -62,15 +35,6 @@ class ChangeLog(Frame):
 
         sort_frame = ttk.Frame(self, relief="solid")
         sort_frame.pack()
-
-        '''sort_var = StringVar()
-        sort_var.set("Numer referencji")
-
-        sort_options = {"": "", "id": "ID", "tstamp": "Data zmiany", "who": "Użytkownik", "old_val":
-            "Stara wartość", "new_val": "Nowa wartość", "operation": "Operacja"}
-        sort_dropdown = ttk.OptionMenu(sort_frame, sort_var, *sort_options.values())
-        sort_dropdown.pack(side=LEFT, padx=25, pady=10)
-        sort_dropdown.configure(width=15)'''
 
         self.partnumber_label = Label(sort_frame, text="Szukana wartość: ")
         self.partnumber_label.pack(side=LEFT, padx=15, pady=10)
@@ -104,16 +68,12 @@ class ChangeLog(Frame):
         self.my_tree.heading("new_val", text="Nowa wartość", anchor=CENTER)
         self.my_tree.heading("operation", text="Czynność", anchor=CENTER)
 
-        '''for col in self.my_tree['columns']:
-            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "ASC"))
-            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "DESC"))
-'''
         back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                           command=lambda: master.switch_frame(StartPage))
         back_btn.pack(side=BOTTOM, pady=10)
 
-        results = create_session.execute(SELECT_ALL_CHANGELOG)
+        results = session.execute(SELECT_ALL_CHANGELOG)
         all_rows = results.fetchall()
         for a_row in all_rows:
             self.my_tree.insert("", "end", values=(*a_row,))
-        create_session.close()
+        session.close()

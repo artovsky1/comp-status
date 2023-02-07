@@ -43,7 +43,6 @@ class ModifyTempCompPage(Frame):
         self.partnumber_py.bind("<Return>", update_revision_list)
         self.revision_py = ttk.Combobox(self, width=20, values=list_revision(self))
 
-
         self.partnumber_py.focus_set()
 
         self.partnumber_py_label = Label(self, text="Part number: ", font=LabelFont, bg=BgColor)
@@ -51,9 +50,11 @@ class ModifyTempCompPage(Frame):
         self.revision_py_label = Label(self, text="Rewizja: ", font=LabelFont, bg=BgColor)
         self.revision_py_label.grid(row=1, column=0)
 
-        self.edit_btn = Button(self, text="Modyfikuj komponent", image=self.button_img, **ButtonSettings, command=empty_fields)
+        self.edit_btn = Button(self, text="Modyfikuj komponent", image=self.button_img, **ButtonSettings,
+                               command=empty_fields)
 
-        self.back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings, command=lambda: master.switch_frame(StartPage))
+        self.back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
+                               command=lambda: master.switch_frame(StartPage))
 
         Label(self, text="", bg=BgColor).grid(row=0, column=0, columnspan=2)
 

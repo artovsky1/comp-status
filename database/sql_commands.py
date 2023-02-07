@@ -1,68 +1,69 @@
 # Login page
-SELECT_LOGIN = "SELECT username FROM user_data WHERE username = (%s)"
-SELECT_PASSWORD = "SELECT username, password FROM user_data WHERE username = (%s) AND password = (%s)"
+SELECT_LOGIN = "SELECT username FROM user_data WHERE username = ?"
+SELECT_PASSWORD = "SELECT username, password FROM user_data WHERE username = ? AND password = ?"
 
 # New page commands
-SELECT_COMPONENT = "SELECT partnumber, revision FROM component_status WHERE partnumber = (%s) AND revision = (%s)"
-INSERT_COMPONENT = "INSERT INTO component_status (partnumber, revision, description, project, quantity, localization) " \
-                   "VALUES ((%s), (%s), (%s), (%s), (%s), (%s))"
+SELECT_COMPONENT = "SELECT partnumber, revision FROM stan_komponentow WHERE partnumber = ? AND revision = ?"
+INSERT_COMPONENT = "INSERT INTO stan_komponentow (partnumber, revision, description, project, quantity, localization) " \
+                   "VALUES (?, ?, ?, ?, ?, ?)"
 
 # Modify temp page commands
 SELECT_COMPONENT_ALL = "SELECT partnumber, revision, description, project, quantity, localization FROM " \
-                       "component_status WHERE partnumber = (%s) AND revision = (%s)"
+                       "stan_komponentow WHERE partnumber = ? AND revision = ?"
 
 # Modify page commands
-SELECT_COMPONENT_EXCEPT = "SELECT partnumber, revision FROM component_status WHERE partnumber = (%s) AND revision = (%s) " \
-                          "EXCEPT SELECT partnumber, revision FROM component_status WHERE partnumber = (%s) AND revision " \
-                          "= (%s)"
-UPDATE_COMPONENT = "UPDATE component_status SET partnumber =(%s), revision=(%s), description=(%s), project= (%s), " \
-                   "quantity=(%s), localization=(%s) WHERE partnumber = (%s) " \
-                   " AND revision = (%s)"
+SELECT_COMPONENT_EXCEPT = "SELECT partnumber, revision FROM stan_komponentow WHERE partnumber = ? AND revision = ? " \
+                          "EXCEPT SELECT partnumber, revision FROM stan_komponentow WHERE partnumber = ? AND revision " \
+                          "= ?"
+UPDATE_COMPONENT = "UPDATE stan_komponentow SET partnumber =?, revision=?, description=?, project= ?, " \
+                   "quantity=?, localization=? WHERE partnumber = ? " \
+                   " AND revision = ?"
 
 # Delete page commands
-DELETE_COMPONENT = "DELETE FROM component_status WHERE partnumber = (%s) AND revision = (%s)"
+DELETE_COMPONENT = "DELETE FROM stan_komponentow WHERE partnumber = ? AND revision = ?"
 
 # Bring back page commands
-BRING_BACK_COMPONENT = "UPDATE component_status SET quantity = quantity + (%s) WHERE (%s) = " \
-                       "partnumber AND (%s) = revision"
+BRING_BACK_COMPONENT = "UPDATE stan_komponentow SET quantity = quantity + ? WHERE ? = " \
+                       "partnumber AND ? = revision"
 
 # Bring page commands
-BRING_COMPONENT = "UPDATE component_status SET quantity = quantity - (%s) WHERE (%s) = " \
-                  "partnumber AND (%s) = revision"
-
+BRING_COMPONENT = "UPDATE stan_komponentow SET quantity = quantity - ? WHERE ? = " \
+                  "partnumber AND ? = revision"
+ACTUAL_QTY = "SELECT quantity FROM stan_komponentow WHERE partnumber = ? AND revision = ?" \
+             ""
 # Change temp page commands
-SELECT_COMPONENT_LOC = "SELECT partnumber, revision, localization FROM component_status WHERE partnumber = " \
-                       "(%s) AND revision = (%s)"
+SELECT_COMPONENT_LOC = "SELECT partnumber, revision, localization FROM stan_komponentow WHERE partnumber = " \
+                       "? AND revision = ?"
 
 # Change page commands
-CHANGE_COMP_LOC = "UPDATE component_status SET localization = (%s) WHERE partnumber = (%s) " \
-                  " AND revision = (%s)"
+CHANGE_COMP_LOC = "UPDATE stan_komponentow SET localization = ? WHERE partnumber = ? " \
+                  " AND revision = ?"
 
 # Lookup commands
-SELECT_ALL = "SELECT * FROM component_status ORDER BY id ASC"
+SELECT_ALL = "SELECT * FROM stan_komponentow ORDER BY id ASC"
 
 
 def get_search_query(what_to_search, search_query):
-    return f"SELECT * FROM component_status WHERE {what_to_search} LIKE '%{search_query}%'"
+    return f"SELECT * FROM stan_komponentow WHERE {what_to_search} LIKE '%{search_query}%'"
 
 
 def get_sort_query(what_to_search, order, search_query):
-    return f"SELECT * FROM component_status WHERE {what_to_search} LIKE '%{search_query}%' ORDER BY {what_to_search} {order}"
+    return f"SELECT * FROM stan_komponentow WHERE {what_to_search} LIKE '%{search_query}%' ORDER BY {what_to_search} {order}"
 
 
 # Changelog commands
-SELECT_ALL_CHANGELOG = SELECT_ALL_CHANGELOG = "SELECT id, tstamp, who, old_val, new_val, operation FROM t_history ORDER BY id DESC"
+SELECT_ALL_CHANGELOG = 'SELECT id, CONVERT(VARCHAR, datetime, 20), hostname, old_value, new_value, action FROM komponentyLOG ORDER BY id DESC'
 
 
 
 def get_search_changelog(search_query):
-    return f"SELECT id, datetime, hostname, old_value, new_value, action FROM komponentyLOG WHERE old_value LIKE '%{search_query}%' OR new_value LIKE '%{search_query}%' ORDER BY id DESC"
+    return f"SELECT id, CONVERT(VARCHAR, datetime, 20), hostname, old_value, new_value, action FROM komponentyLOG WHERE old_value LIKE '%{search_query}%' OR new_value LIKE '%{search_query}%' ORDER BY id DESC"
 
 
 # Auto Complete commands
-SELECT_LIST = "SELECT DISTINCT(partnumber) FROM component_status ORDER BY partnumber ASC"
-SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM component_status WHERE partnumber LIKE '%' || :partnumber || '%' ORDER BY revision ASC"
+SELECT_LIST = "SELECT DISTINCT(partnumber) FROM stan_komponentow ORDER BY partnumber ASC"
+SELECT_LIST_REV = "SELECT DISTINCT(revision) FROM stan_komponentow WHERE partnumber LIKE '%' + :partnumber + '%' ORDER BY revision ASC"
 
 # Project and desc list
-DESC_LIST = "SELECT DISTINCT(description) FROM component_status ORDER BY description ASC"
-PROJECT_LIST = "SELECT DISTINCT(project) FROM component_status ORDER BY project ASC"
+DESC_LIST = "SELECT DISTINCT(description) FROM stan_komponentow ORDER BY description ASC"
+PROJECT_LIST = "SELECT DISTINCT(project) FROM stan_komponentow ORDER BY project ASC"

@@ -4,7 +4,7 @@ import os
 import sys
 
 conn = connection()
-session = session()
+session = create_session()
 
 
 def get_path(filename):
@@ -41,11 +41,13 @@ def search(self, event):
                 data.append(item)
             self.partnumber_py['values'] = data
 
+
 def list_projects():
     result = session.execute(PROJECT_LIST)
     result_list = [row[0].strip() for row in result]
     session.close()
     return result_list
+
 
 def search_project(self, event):
     value = event.widget.get()
@@ -60,11 +62,13 @@ def search_project(self, event):
                 data.append(item)
             self.project_py['values'] = data
 
+
 def list_desc():
     result = session.execute(DESC_LIST)
     result_list = [row[0].strip() for row in result]
     session.close()
     return result_list
+
 
 def search_desc(self, event):
     value = event.widget.get()

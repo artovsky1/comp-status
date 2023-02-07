@@ -65,23 +65,46 @@ class BringBackCompPage(Frame):
             else:
                 master.switch_frame(StartPage)
 
+        def act_value(*args):
+            try:
+                values = (self.partnumber_py.get().strip(), self.revision_py.get().strip())
+                act_val = create_conn.execute(ACTUAL_QTY, values).fetchone()
+                self.act_quantity_py.configure(state='normal')
+                self.act_quantity_py.delete(0, END)
+                self.act_quantity_py.insert(0, *act_val)
+                self.act_quantity_py.configure(state='readonly')
+            except TypeError:
+                pass
+
+        def wrapper_function(*args):
+            for function in args:
+                function()
+
         self.button_img = PhotoImage(file=get_path("Button.png"))
 
         self.partnumber_py = ttk.Combobox(self, width=20, values=list_partnumber())
-        self.partnumber_py.bind('<KeyRelease>', lambda event: search(self, event))
-        self.partnumber_py.bind("<FocusOut>", update_revision_list)
-        self.partnumber_py.bind("<<ComboboxSelected>>", update_revision_list)
-        self.partnumber_py.bind("<Return>", update_revision_list)
         self.revision_py = ttk.Combobox(self, width=20, values=list_revision(self))
+        self.act_quantity_py = ttk.Entry(self, width=23)
+        self.act_quantity_py.configure(state='readonly')
         self.quantity_py = ttk.Entry(self, width=23)
+
+        self.partnumber_py.bind('<KeyRelease>', lambda event: search(self, event))
+        self.partnumber_py.bind("<FocusOut>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.partnumber_py.bind("<<ComboboxSelected>>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.partnumber_py.bind("<Return>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.revision_py.bind("<FocusOut>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.revision_py.bind("<<ComboboxSelected>>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.revision_py.bind("<Return>", lambda event: wrapper_function(update_revision_list, act_value))
+        self.bind('<Motion>', act_value)
 
         self.partnumber_py.focus_set()
 
         self.partnumber_py_label = Label(self, text="Part number: ", font=LabelFont, bg=BgColor)
         self.revision_py_label = Label(self, text="Rewizja: ", font=LabelFont, bg=BgColor)
+        self.act_quantity_py_label = Label(self, text="Aktualna ilość: ", font=LabelFont, bg=BgColor)
         self.quantity_py_label = Label(self, text="Ilość: ", font=LabelFont, bg=BgColor)
 
-        self.edit_btn = Button(self, text="Przyjmij komponent", image=self.button_img, **ButtonSettings,
+        self.edit_btn = Button(self, text="Wydaj komponent", image=self.button_img, **ButtonSettings,
                                command=button_action)
         self.back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                                command=lambda: master.switch_frame(StartPage))
@@ -90,16 +113,18 @@ class BringBackCompPage(Frame):
 
         self.partnumber_py_label.grid(row=1, column=0, padx=10, pady=10, sticky='E')
         self.revision_py_label.grid(row=2, column=0, padx=10, pady=10, sticky='E')
-        self.quantity_py_label.grid(row=3, column=0, padx=10, pady=10, sticky='E')
+        self.act_quantity_py_label.grid(row=3, column=0, padx=10, pady=10, sticky='E')
+        self.quantity_py_label.grid(row=4, column=0, padx=10, pady=10, sticky='E')
         self.partnumber_py.grid(row=1, column=1, padx=10, pady=10, sticky='W')
         self.revision_py.grid(row=2, column=1, padx=10, pady=10, sticky='W')
-        self.quantity_py.grid(row=3, column=1, padx=10, pady=10, sticky='W')
+        self.act_quantity_py.grid(row=3, column=1, padx=10, pady=10, sticky='W')
+        self.quantity_py.grid(row=4, column=1, padx=10, pady=10, sticky='W')
 
-        Label(self, text="", bg=BgColor).grid(row=4, column=0, columnspan=2)
         Label(self, text="", bg=BgColor).grid(row=5, column=0, columnspan=2)
         Label(self, text="", bg=BgColor).grid(row=6, column=0, columnspan=2)
         Label(self, text="", bg=BgColor).grid(row=7, column=0, columnspan=2)
         Label(self, text="", bg=BgColor).grid(row=8, column=0, columnspan=2)
+        Label(self, text="", bg=BgColor).grid(row=9, column=0, columnspan=2)
 
         self.edit_btn.place(relx=0.77, rely=0.82, anchor='center')
         self.back_btn.place(relx=0.23, rely=0.82, anchor='center')
