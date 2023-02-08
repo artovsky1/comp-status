@@ -21,15 +21,13 @@ class StartPage(Frame):
         master.title("Strona startowa")
         master.width, master.height = 560, 400
 
-
-
         self.background_img = PhotoImage(file=get_path("Background.png"))
         self.button_img = PhotoImage(file=get_path("Button.png"))
 
         self.background_label = Label(self, image=self.background_img)
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        pageTitle = Label(self, text="Stan komponentów", bg=BgStartColor, font=TitleFont, fg=FgButtonColor)
+        page_title = Label(self, text="Stan komponentów", bg=BgStartColor, font=TitleFont, fg=FgButtonColor)
 
         button0 = Button(self, text="Dodaj komponent", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(NewCompPage))
@@ -55,7 +53,7 @@ class StartPage(Frame):
         button7 = Button(self, text="Historia zmian", image=self.button_img, **ButtonSettings,
                          command=lambda: master.switch_frame(ChangeLog))
 
-        pageTitle.grid(row=0, column=0, pady=20, padx=10)
+        page_title.grid(row=0, column=0, pady=20, padx=10)
 
         Label(self, text="", bg=BgColor).grid(row=1, column=0, columnspan=18)
         Label(self, text="", bg=BgColor).grid(row=2, column=0, columnspan=18)
@@ -81,4 +79,3 @@ class StartPage(Frame):
         button5.place(relx=0.5, rely=0.88, anchor='center')
         button6.place(relx=0.8, rely=0.38, anchor='center')
         button7.place(relx=0.8, rely=0.63, anchor='center')
-

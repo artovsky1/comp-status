@@ -69,7 +69,7 @@ class LookUpPage(Frame):
         sort_var = StringVar()
         sort_var.set("Numer referencji")
 
-        sort_options = {"": "", "id": "ID", "partnumber": "Numer referencji", "revision": "Rewizja", "description":
+        sort_options = {"#0": "", "id": "ID", "partnumber": "Numer referencji", "revision": "Rewizja", "description":
                         "Opis", "project": "Projekt", "quantity": "Ilość", "localization": "Lokalizacja"}
         sort_dropdown = ttk.OptionMenu(sort_frame, sort_var, *sort_options.values())
         sort_dropdown.pack(side=LEFT, padx=25, pady=10)
@@ -98,17 +98,10 @@ class LookUpPage(Frame):
         self.my_tree.column("project", anchor=CENTER, width=100)
         self.my_tree.column("quantity", anchor=CENTER, width=70)
         self.my_tree.column("localization", anchor=CENTER, width=80)
-        self.my_tree.heading("id", text="ID", anchor=CENTER)
-        self.my_tree.heading("partnumber", text="Numer referencji", anchor=CENTER)
-        self.my_tree.heading("revision", text="Rewizja", anchor=CENTER)
-        self.my_tree.heading("description", text="Opis", anchor=CENTER)
-        self.my_tree.heading("project", text="Projekt", anchor=CENTER)
-        self.my_tree.heading("quantity", text="Ilość", anchor=CENTER)
-        self.my_tree.heading("localization", text="Lokalizacja", anchor=CENTER)
 
-        for col in self.my_tree['columns']:
-            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "ASC"))
-            self.my_tree.heading(col, text=col.capitalize(), command=lambda c=col: sort_treeview(c, "DESC"))
+        for col, value in sort_options.items():
+            self.my_tree.heading(col, text=value, anchor=CENTER, command=lambda c=col: sort_treeview(c, "ASC"))
+            self.my_tree.heading(col, text=value, anchor=CENTER, command=lambda c=col: sort_treeview(c, "DESC"))
 
         back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                           command=lambda: master.switch_frame(StartPage))

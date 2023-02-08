@@ -62,6 +62,7 @@ class BringCompPage(Frame):
             if messagebox.askyesno("Informacja", "Czy chcesz wydać kolejny komponent?"):
                 for entry in entry_widgets:
                     entry.delete(0, END)
+                    self.partnumber_py.focus_set()
             else:
                 master.switch_frame(StartPage)
 

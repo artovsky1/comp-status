@@ -15,7 +15,7 @@ class BringBackCompPage(Frame):
 
         self.config(bg=BgColor)
         master.title("Przyjmij komponent")
-        master.width, master.height = 360, 300
+        master.width, master.height = 360, 330
 
         create_conn = connection()
 
@@ -62,6 +62,7 @@ class BringBackCompPage(Frame):
             if messagebox.askyesno("Informacja", "Czy chcesz przyjąć kolejny komponent?"):
                 for entry in entry_widgets:
                     entry.delete(0, END)
+                    self.partnumber_py.focus_set()
             else:
                 master.switch_frame(StartPage)
 

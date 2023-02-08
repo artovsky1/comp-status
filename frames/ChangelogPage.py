@@ -50,6 +50,9 @@ class ChangeLog(Frame):
         self.my_tree = ttk.Treeview(tree_frame, selectmode='extended')
         self.my_tree.pack(side=LEFT, fill=BOTH, expand=True)
 
+        column_headers = {"#0": "", "id": "ID", "tstamp": "Data zmiany", "who": "Użytkownik", "old_val":
+            "Stara wartość", "new_val": "Nowa wartość", "operation": "Czynność"}
+
         self.tree_scroll = ttk.Scrollbar(tree_frame, orient="vertical", command=self.my_tree.yview)
         self.tree_scroll.pack(side=RIGHT, fill=Y)
         self.my_tree.configure(yscrollcommand=self.tree_scroll.set)
@@ -61,12 +64,10 @@ class ChangeLog(Frame):
         self.my_tree.column("old_val", anchor=CENTER)
         self.my_tree.column("new_val", anchor=CENTER)
         self.my_tree.column("operation", anchor=CENTER, width=80)
-        self.my_tree.heading("id", text="ID", anchor=CENTER)
-        self.my_tree.heading("tstamp", text="Data zmiany", anchor=CENTER)
-        self.my_tree.heading("who", text="Użytkownik", anchor=CENTER)
-        self.my_tree.heading("old_val", text="Stara wartość", anchor=CENTER)
-        self.my_tree.heading("new_val", text="Nowa wartość", anchor=CENTER)
-        self.my_tree.heading("operation", text="Czynność", anchor=CENTER)
+
+        for col, value in column_headers.items():
+            self.my_tree.heading(col, text=value, anchor=CENTER)
+            self.my_tree.heading(col, text=value, anchor=CENTER)
 
         back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                           command=lambda: master.switch_frame(StartPage))
