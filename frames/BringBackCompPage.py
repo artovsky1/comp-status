@@ -105,7 +105,7 @@ class BringBackCompPage(Frame):
         self.act_quantity_py_label = Label(self, text="Aktualna ilość: ", font=LabelFont, bg=BgColor)
         self.quantity_py_label = Label(self, text="Ilość: ", font=LabelFont, bg=BgColor)
 
-        self.edit_btn = Button(self, text="Wydaj komponent", image=self.button_img, **ButtonSettings,
+        self.edit_btn = Button(self, text="Przyjmij komponent", image=self.button_img, **ButtonSettings,
                                command=button_action)
         self.back_btn = Button(self, text="Wróć", image=self.button_img, **ButtonSettings,
                                command=lambda: master.switch_frame(StartPage))

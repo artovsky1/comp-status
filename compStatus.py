@@ -7,7 +7,8 @@ from database.sql_commands import *
 from frames.StartPage import StartPage
 from frames.LoginPage import *
 
-#V1.0
+
+# V1.1
 
 class Inventory(Tk):
     def __init__(self):

@@ -78,6 +78,8 @@ class LookUpPage(Frame):
         self.search_entry = ttk.Entry(sort_frame)
         self.search_entry.pack(side=LEFT, padx=25, pady=10)
 
+        self.search_entry.focus_set()
+
         self.search_entry.bind('<KeyRelease>', a_search)
 
         tree_frame = ttk.Frame(self)
